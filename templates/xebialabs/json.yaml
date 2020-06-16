@@ -1,0 +1,18 @@
+---
+apiVersion: xl-release/v1
+kind: Templates
+spec:
+- directory: meetup
+  children:
+  - template: json
+    scheduledStartDate: 2020-06-16T13:00:00Z
+    phases:
+    - phase: New Phase
+      tasks:
+      - name: Get Post Comments
+        type: meetup.getPostComments
+        server: meetup
+        postId: "1"
+      - name: gate
+        type: xlrelease.GateTask
+    riskProfile: Default risk profile

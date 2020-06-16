@@ -13,6 +13,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
            xmlns="http://www.xebialabs.com/deployit/synthetic"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+    <type type="meetup.Server" extends="configuration.HttpConnection">
+      <property name="username" default="username"/>
+      <property name="password" password="true" default="password"/>
+      <property name="scriptLocation" hidden="true" default="meetup/HttpConnectionCheck.py"/>
+    </type>
+
     <!-- Simple Task Configurations -->
     <type type="meetup.Task" extends="xlrelease.PythonScript" virtual="true">
         <property name="scriptLocation" default="meetup/Task.py" hidden="true"/>
@@ -24,4 +30,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <property name="maxValue" category="input" label="Maximun Value" required="true" description="The largest number in the range."/>
         <property name="output" category="output" kind="string" description="The output returned from execution of the task."/>
     </type>
+
+    <type type="meetup.getPostComments" extends="meetup.Task" label="Get Post Comments">
+      <property name="server" category="input" label="Server" referenced-type="meetup.Server" kind="ci" />
+      <property name="username" category="input" required="true" />
+      <property name="password" password="true" category="input" required="true" />
+      <property name="postId" category="input" label="Post ID" required="true" />
+      <property name="responseJson" category="output" />
+      <property name="comments" category="output" kind="list_of_string" label="Comments" />
+    </type>
+
 </synthetic>
