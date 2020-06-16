@@ -1,0 +1,38 @@
+---
+apiVersion: xl-release/v1
+kind: Templates
+spec:
+- directory: meetup
+  children:
+  - template: random_number_generator
+    scheduledStartDate: 2020-06-15T13:00:00Z
+    phases:
+    - phase: Meetup
+      tasks:
+      - name: Generate Random Number
+        type: meetup.randomNumberGenerator
+        minValue: ${minimumValue}
+        maxValue: ${maximumValue}
+      - name: Gate
+        type: xlrelease.GateTask
+        owner: admin
+      color: '#0079BC'
+    variables:
+    - type: xlrelease.StringVariable
+      key: minimumValue
+    - type: xlrelease.StringVariable
+      key: maximumValue
+    riskProfile: Default risk profile
+  - type: xlrelease.Dashboard
+    tiles:
+    - name: Release progress
+      type: xlrelease.ReleaseProgressTile
+    - name: Release summary
+      type: xlrelease.ReleaseSummaryTile
+    - name: Resource usage
+      type: xlrelease.ResourceUsageTile
+    - name: Release timeline
+      type: xlrelease.TimelineTile
+    - name: Release health
+      type: xlrelease.ReleaseHealthTile
+    parentTemplate: random_number_generator
