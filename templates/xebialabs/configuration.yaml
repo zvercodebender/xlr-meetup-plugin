@@ -1,0 +1,9 @@
+---
+apiVersion: xl-release/v1
+kind: Templates
+spec:
+- directory: meetup
+  children:
+  - name: meetup
+    type: meetup.Server
+    url: https://jsonplaceholder.typicode.com

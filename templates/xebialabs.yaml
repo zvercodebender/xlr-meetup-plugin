@@ -1,0 +1,7 @@
+apiVersion: xl/v1
+kind: Import
+metadata:
+  imports:
+    - xebialabs/configuration.yaml
+    - xebialabs/json.yaml
+    - xebialabs/random_number_generator.yaml
