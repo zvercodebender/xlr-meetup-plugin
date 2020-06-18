@@ -15,4 +15,5 @@ spec:
         postId: "1"
       - name: gate
         type: xlrelease.GateTask
+        owner: admin
     riskProfile: Default risk profile
